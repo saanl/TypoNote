@@ -1,0 +1,5 @@
+{
+  "name": "TypoNote",
+  "description": "A typora-like markdown editor with split views, multi-tab management, custom themes, and PDF export.",
+  "requestFramePermissions": []
+}

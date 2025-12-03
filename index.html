@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypoNote</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "var(--bg-primary)",
+              foreground: "var(--text-primary)",
+              primary: {
+                DEFAULT: "var(--accent)",
+                foreground: "hsl(var(--primary-foreground))",
+              },
+            },
+            fontFamily: {
+              mono: ['"Fira Code"', 'monospace'],
+              sans: ['"Inter"', 'system-ui', 'sans-serif'],
+              serif: ['"Lora"', 'Georgia', 'serif'],
+            },
+            transitionTimingFunction: {
+              // A smooth, slightly springy curve for UI slides
+              'elastic': 'cubic-bezier(0.2, 0.8, 0.2, 1)', 
+            }
+          },
+        },
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+      /* Custom Scrollbar Logic */
+      /* Base state: Hidden track, transparent thumb */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+        transition: scrollbar-color 0.3s ease;
+      }
+      
+      /* Webkit styling */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 4px;
+        border: 2px solid transparent; /* padding around thumb */
+        background-clip: content-box;
+      }
+
+      /* Hover states: Show scrollbar on hover */
+      *:hover {
+        scrollbar-color: rgba(156, 163, 175, 0.4) transparent;
+      }
+      
+      *:hover::-webkit-scrollbar-thumb {
+        background-color: rgba(156, 163, 175, 0.4); 
+      }
+      
+      /* Active state for scrollbar itself */
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(107, 114, 128, 0.8) !important; 
+      }
+
+      /* Utility class to forcefully hide if needed */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      /* Print Styles for PDF Export */
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+        .print-only {
+          display: block !important;
+          width: 100%;
+          height: 100%;
+          overflow: visible;
+        }
+        body, #root {
+          background: white !important;
+          color: black !important;
+          height: auto !important;
+          overflow: visible !important;
+        }
+        .markdown-preview {
+          padding: 0 !important;
+          margin: 0 !important;
+          border: none !important;
+          width: 100% !important;
+        }
+      }
+      
+      /* Mask gradient for horizontal scrolling toolbars */
+      .mask-gradient {
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "remark-gfm": "https://aistudiocdn.com/remark-gfm@^4.0.1",
+    "rehype-raw": "https://aistudiocdn.com/rehype-raw@^7.0.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
